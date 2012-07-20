@@ -79,6 +79,12 @@ class UrlsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to urls_url }
       format.json { head :no_content }
-    end
+    end 
+  end
+  
+  def redirect
+    #lookup short_url_slug retrun long_url
+    url = Url.find_by_short_url_slug(params[:short_url_slug])
+      redirect_to url.long_url
   end
 end
